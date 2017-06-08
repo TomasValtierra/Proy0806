@@ -23,8 +23,20 @@ and open the template in the editor.
             $("#enviar").click(function(){
                 /*$("form").hide();
                 alert("ocultaste el formulario men"+$("nomusuario".val());*/
-                if($("#nomusuario").val()!="" && $("#clave").val()!="")
-                    $("#frmusuario").submit();
+                 
+        
+        if ($("#nomusuario").val()!="" && $("#clave").val()!=""){
+                    /*$("#frmusuario").submit();*/
+                    $.ajax({url:"controlador/validacion.php"
+                        ,type:'post'
+                        ,data:{'nomusuario':$("#nomusuario").val(),
+                            'clave':$("#clave").val()
+                            }
+                        ,success:function(resultado){
+                              $("#mensaje").html(resultado);
+                          }      
+                    });
+                }
                 else
                     alert("debe agregar el usuario y clave");
                             
